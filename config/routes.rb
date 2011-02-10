@@ -1,8 +1,10 @@
 BankingApp::Application.routes.draw do
   
   match '/home', :to => 'pages#home'
-  match '/list', :to => 'pages#list'
-  match '/open', :to => 'pages#open'
+  #match '/list', :to => 'pages#list'
+  match '/list', :to => 'accounts#index'
+  #match '/open', :to => 'pages#open'
+  match '/open', :to => 'accounts#new'
   match '/deposit', :to => 'pages#deposit'
   match '/withdrawal', :to => 'pages#withdrawal'
   match '/transfer', :to => 'pages#transfer'

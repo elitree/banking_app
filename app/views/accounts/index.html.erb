@@ -1,29 +1,27 @@
-<h1>Listing accounts</h1>
+<h1>List Accounts</h1>
 
 <table>
   <tr>
-    <th>Type</th>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Social Security Number</th>
     <th>Amount</th>
-    <th>Datetime opened</th>
-    <th>Customer</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @accounts.each do |account| %>
   <tr>
-    <td><%= account.type %></td>
+    <td><%= account.last_name %></td>
+    <td><%= account.first_name %></td>
+    <td><%= account.address %></td>
+    <td><%= account.phone %></td>
+    <td><%= account.soc_sec %></td>
     <td><%= account.amount %></td>
-    <td><%= account.datetime_opened %></td>
-    <td><%= account.customer_id %></td>
-    <td><%= link_to 'Show', account %></td>
-    <td><%= link_to 'Edit', edit_account_path(account) %></td>
-    <td><%= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Edit', edit_account_path(account) %>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Account', new_account_path %>

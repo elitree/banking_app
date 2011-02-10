@@ -1,25 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Type:</b>
-  <%= @account.type %>
+  <b>Last Name:</b>
+  <%= @account.last_name %>
+</p>
+
+<p>
+  <b>First Name:</b>
+  <%= @account.first_name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @account.address %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @account.phone %>
+</p>
+
+<p>
+  <b>Social Security Number:</b>
+  <%= @account.soc_sec %>
 </p>
 
 <p>
   <b>Amount:</b>
   <%= @account.amount %>
 </p>
-
-<p>
-  <b>Datetime opened:</b>
-  <%= @account.datetime_opened %>
-</p>
-
-<p>
-  <b>Customer:</b>
-  <%= @account.customer_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>

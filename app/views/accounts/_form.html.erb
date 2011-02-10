@@ -12,20 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :soc_sec %><br />
+    <%= f.text_field :soc_sec %>
   </div>
   <div class="field">
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
-  </div>
-  <div class="field">
-    <%= f.label :datetime_opened %><br />
-    <%= f.datetime_select :datetime_opened %>
-  </div>
-  <div class="field">
-    <%= f.label :customer_id %><br />
-    <%= f.text_field :customer_id %>
   </div>
   <div class="actions">
     <%= f.submit %>
