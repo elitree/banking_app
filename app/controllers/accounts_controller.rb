@@ -44,7 +44,7 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to(@account, :notice => 'Account was successfully created.') }
+        format.html { redirect_to(@account, :notice => "Account #{@account.id} was successfully created.") }
         format.xml  { render :xml => @account, :status => :created, :location => @account }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,7 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.update_attributes(params[:account])
-        format.html { redirect_to(@account, :notice => 'Account was successfully updated.') }
+        format.html { redirect_to(@account, :notice => "Account #{@account.id} was successfully updated.") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

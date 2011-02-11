@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Account Number</th>
     <th>Last Name</th>
     <th>First Name</th>
     <th>Address</th>
@@ -13,6 +14,7 @@
 
 <% @accounts.each do |account| %>
   <tr>
+    <td><%= account.id %></td>
     <td><%= account.last_name %></td>
     <td><%= account.first_name %></td>
     <td><%= account.address %></td>
