@@ -13,6 +13,17 @@ class PagesController < ApplicationController
 
   def deposit
     @title = "Deposit"
+    @accounts = Account.all
+  end
+  
+  def deposit2
+    @title = "Deposit"
+    @account = Account.find(params[:account_id])
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @account }
+    end
   end
 
   def withdrawal

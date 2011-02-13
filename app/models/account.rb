@@ -30,6 +30,21 @@ class Account < ActiveRecord::Base
   					               :message => "SSN must be in 999-99-9999 format."},
   					  :uniqueness => true
   validates :amount, :presence => true,
-                     :numericality => { :greater_than_or_equal_to => 0 }
-
+                     :numericality => { :greater_than => 0 }
+                     
+  def full_name
+    self.first_name + " " + self.last_name
+  end
+  
+  def full_name_with_acct_num
+    self.id.to_s + " - " + self.full_name
+  end
+  
+  def deposit (amount) 
+    self.update_attributes(:amount => self.amount + amount)
+  end
+  
+  def withdraw (amount) 
+    self.update_attributes(:amount => self.amount - amount)
+  end
 end

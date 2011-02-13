@@ -32,5 +32,5 @@
 
 <p>
   <b>Amount:</b>
-  <%= @account.amount %>
+  <%= number_to_currency(@account.amount, :unit => "$") %>
 </p>
