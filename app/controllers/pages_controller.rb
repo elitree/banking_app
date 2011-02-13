@@ -22,6 +22,10 @@ class PagesController < ApplicationController
   def transfer
     @title = "Transfer"
   end
+  
+  def hw1
+    @title = "Homework 1"
+  end
 
   def exit
     @title = "Exit"

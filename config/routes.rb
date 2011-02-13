@@ -8,6 +8,7 @@ BankingApp::Application.routes.draw do
   match '/deposit', :to => 'pages#deposit'
   match '/withdrawal', :to => 'pages#withdrawal'
   match '/transfer', :to => 'pages#transfer'
+  match '/hw1', :to => 'pages#hw1'
   match '/exit', :to => 'pages#exit'
   
   root :to => 'pages#home'
