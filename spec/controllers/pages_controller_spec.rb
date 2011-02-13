@@ -9,20 +9,6 @@ describe PagesController do
     end
   end
 
-  describe "GET 'list'" do
-    it "should be successful" do
-      get 'list'
-      response.should be_success
-    end
-  end
-
-  describe "GET 'open'" do
-    it "should be successful" do
-      get 'open'
-      response.should be_success
-    end
-  end
-
   describe "GET 'deposit'" do
     it "should be successful" do
       get 'deposit'
