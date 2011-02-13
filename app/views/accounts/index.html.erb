@@ -20,7 +20,7 @@
     <td><%= account.address %></td>
     <td><%= account.phone %></td>
     <td><%= account.soc_sec %></td>
-    <td><%= account.amount %></td>
+    <td><%= number_to_currency(account.amount, :unit => "$") %></td>
     <td><%= link_to 'Edit', edit_account_path(account) %>
   </tr>
 <% end %>

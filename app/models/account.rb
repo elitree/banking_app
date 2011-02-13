@@ -26,8 +26,10 @@ class Account < ActiveRecord::Base
   validates :phone, :presence => true,
   					:format => { :with => phone_regex 	}
   validates :soc_sec, :presence => true,
-  					  :format => { :with => ssn_regex },
+  					  :format => { :with => ssn_regex,
+  					               :message => "SSN must be in 999-99-9999 format."},
   					  :uniqueness => true
-  validates :amount, :presence => true
+  validates :amount, :presence => true,
+                     :numericality => { :greater_than_or_equal_to => 0 }
 
 end

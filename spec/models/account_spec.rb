@@ -95,4 +95,9 @@ describe Account do
   	no_amount_acct.should_not be_valid
   end
 
+  it "should reject negative amounts" do
+  	neg_amount_acct = Account.new(@attr.merge(:amount => "-9.25"))
+  	neg_amount_acct.should_not be_valid
+  end
+
 end
