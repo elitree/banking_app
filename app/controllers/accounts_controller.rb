@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
   # GET /accounts.xml
   def index
     # Set per_page to 3 to demonstrate pagination functionality with few accounts
-    @accounts = Account.paginate(:page => params[:page], :per_page => 3)
+    @accounts = Account.paginate(:page => params[:page], :per_page => 3, :order => 'created_at')
 
     respond_to do |format|
       format.html # index.html.erb
