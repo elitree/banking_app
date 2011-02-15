@@ -106,6 +106,26 @@ class AccountsController < ApplicationController
     end
   end
 
+  # PUT /accounts/1
+  # PUT /accounts/1.xml
+  def transfer
+    @account1 = Account.find(params[:id])
+
+    respond_to do |format|
+      if (amount = params[:transfer_amount])
+        @account2 = Account.find(params[:account_id])
+        amount = amount.to_f
+        @account1.withdraw(amount)
+        @account2.deposit(amount)
+        format.html { redirect_to(@account2, :notice => "Account #{@account1.id} was successfully updated.") }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "transfer" }
+        format.xml  { render :xml => @account.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
 
   # DELETE /accounts/1
   # DELETE /accounts/1.xml

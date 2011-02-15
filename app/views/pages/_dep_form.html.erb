@@ -1,4 +1,4 @@
-<%= form_for(@account) do |f| %>
+<% form_tag(:action => 'deposit', :method=>'post') do %>
   <% if @account.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
@@ -12,10 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :amount %><br />
-    <%= f.text_field :amount %>
+    Amount:
+    <%= number_field_tag "dep_amount", nil, :min => 0.01 ,:max => @account.amount %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= submit_tag "Deposit" %>
   </div>
 <% end %>

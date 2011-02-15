@@ -14,6 +14,8 @@
     <th>Social Security Number</th>
     <th>Amount</th>
     <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 
@@ -28,6 +30,7 @@
     <td><%= number_to_currency(account.amount, :unit => "$") %></td>
     <td><%= link_to 'Deposit', deposit_account_path(account) %>
     <td><%= link_to 'Withdrawal', withdrawal_account_path(account) %>
+    <td><%= link_to 'Transfer', transfer_account_path(account) %>
   </tr>
 <% end %>
 

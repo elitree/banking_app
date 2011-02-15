@@ -5,6 +5,7 @@ BankingApp::Application.routes.draw do
   match '/open', :to => 'accounts#new'
   match 'accounts/:id/deposit' => 'accounts#deposit'
   match 'accounts/:id/withdrawal' => 'accounts#withdrawal'
+  match 'accounts/:id/transfer' => 'accounts#transfer'
   match '/transfer', :to => 'pages#transfer'
   match '/hw1', :to => 'pages#hw1'
   match '/exit', :to => 'pages#exit'
@@ -16,6 +17,7 @@ BankingApp::Application.routes.draw do
      member do 
        get 'deposit'
        get 'withdrawal'
+       get 'transfer'
      end
   end
 
