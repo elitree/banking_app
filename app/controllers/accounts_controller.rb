@@ -1,4 +1,7 @@
 class AccountsController < ApplicationController
+  # needed for number_to_currency method
+  include ActionView::Helpers::NumberHelper
+
   # GET /accounts
   # GET /accounts.xml
   def index
@@ -96,9 +99,15 @@ class AccountsController < ApplicationController
     respond_to do |format|
       if (amount = params[:withd_amount])
         amount = amount.to_f
-        @account.withdraw(amount)
-        format.html { redirect_to(@account, :notice => "Account #{@account.id} was successfully updated.") }
-        format.xml  { head :ok }
+        if (amount <= @account.amount)
+           @account.withdraw(amount)
+           format.html { redirect_to(@account, :notice => "Account #{@account.id} was successfully updated.") }
+           format.xml  { head :ok }
+        else
+           @error = "Amount may not exceed the account balance."
+           format.html { render :action => "withdrawal" }
+           format.xml  { render :xml => @account.errors, :status => :unprocessable_entity }
+        end
       else
         format.html { render :action => "withdrawal" }
         format.xml  { render :xml => @account.errors, :status => :unprocessable_entity }
@@ -109,20 +118,33 @@ class AccountsController < ApplicationController
   # PUT /accounts/1
   # PUT /accounts/1.xml
   def transfer
+    # Transfer from account1
     @account1 = Account.find(params[:id])
+    # A temp array for the options menu - all accounts except account1
+    @not_account1 = Account.all.reject{|x| x == @account1 }
 
     respond_to do |format|
       if (amount = params[:transfer_amount])
-        @account2 = Account.find(params[:account_id])
+        @account2 = Account.find(params[:account2_id])
         amount = amount.to_f
         @account1.withdraw(amount)
         @account2.deposit(amount)
-        format.html { redirect_to(@account2, :notice => "Account #{@account1.id} was successfully updated.") }
+        amount = number_to_currency(amount, :unit => "$")
+        @notice = amount + " was successfully transferred from account " + @account1.id.to_s + " to account " + @account2.id.to_s + "."
+        format.html { render (:action => "show2") }
         format.xml  { head :ok }
       else
         format.html { render :action => "transfer" }
         format.xml  { render :xml => @account.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+  def show2
+     #@account1 = Account.find(params[:id])
+     #@account2 = Account.find(params[:account2_id])
+     respond_to do |format|
+      format.html # show2.html.erb
     end
   end
 

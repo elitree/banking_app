@@ -1,12 +1,8 @@
 <% form_tag(:action => 'deposit', :method=>'post') do %>
-  <% if @account.errors.any? %>
+  <% if @error %>
     <div id="error_explanation">
-      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
-
       <ul>
-      <% @account.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <li><%= @error %></li>
       </ul>
     </div>
   <% end %>

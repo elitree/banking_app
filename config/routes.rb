@@ -6,18 +6,20 @@ BankingApp::Application.routes.draw do
   match 'accounts/:id/deposit' => 'accounts#deposit'
   match 'accounts/:id/withdrawal' => 'accounts#withdrawal'
   match 'accounts/:id/transfer' => 'accounts#transfer'
-  match '/transfer', :to => 'pages#transfer'
+  match 'accounts/:id/show2' => 'accounts#show2'
   match '/hw1', :to => 'pages#hw1'
   match '/exit', :to => 'pages#exit'
   
   root :to => 'pages#home'
  
-
+  # The standard resources include things like "edit", "index", "new", etc.
+  # This block is for the actions not built into :accounts
   resources :accounts do 
      member do 
        get 'deposit'
        get 'withdrawal'
        get 'transfer'
+       get 'show2'
      end
   end
 
